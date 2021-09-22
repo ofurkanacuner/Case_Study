@@ -15,12 +15,22 @@ namespace GeoSys.DAL.Repository
     public class EntityRepository<T>
         where T : BaseModel
     {
+        #region - Variable
+
         private readonly ApplicationContext _context;
+
+        #endregion
+
+        #region - Ctor
 
         public EntityRepository()
         {
             _context = new ApplicationContext();
         }
+
+        #endregion
+
+        #region - Add
 
         public void Add(T entity)
         {
@@ -33,10 +43,18 @@ namespace GeoSys.DAL.Repository
             _context.SaveChanges();
         }
 
+        #endregion
+
+        #region - Any
+
         public bool Any(Expression<Func<T, bool>> query = null, params Expression<Func<T, object>>[] includeExpressions)
         {
             return query == null ? _context.Set<T>().Any(x => x.IsItDeleted == false) : _context.Set<T>().Where(x => x.IsItDeleted == false).Any(query);
         }
+
+        #endregion
+
+        #region - Delete
 
         public void Delete(T entity)
         {
@@ -46,6 +64,10 @@ namespace GeoSys.DAL.Repository
             Update(entity);
             _context.SaveChanges();
         }
+
+        #endregion
+
+        #region - Delete
 
         public virtual void Delete(Expression<Func<T, bool>> query)
         {
@@ -61,6 +83,10 @@ namespace GeoSys.DAL.Repository
             }
         }
 
+        #endregion
+
+        #region - Get
+
         public virtual T Get(Expression<Func<T, bool>> query, params Expression<Func<T, object>>[] includeExpressions)
         {
             var newQuery = _context.Set<T>().Where(a => a.IsItDeleted == false);
@@ -70,6 +96,10 @@ namespace GeoSys.DAL.Repository
             }
             return newQuery.SingleOrDefault(query);
         }
+
+        #endregion
+
+        #region - Get Count
 
         public int GetCount(Expression<Func<T, bool>> query = null, params Expression<Func<T, object>>[] includeExpressions)
         {
@@ -81,6 +111,10 @@ namespace GeoSys.DAL.Repository
             return newQuery.Count();
         }
 
+        #endregion
+
+        #region - Get List
+
         public IQueryable<T> GetList(Expression<Func<T, bool>> query = null, params Expression<Func<T, object>>[] includeExpressions)
         {
             var newQuery = _context.Set<T>().Where(a => a.IsItDeleted == false);
@@ -91,11 +125,17 @@ namespace GeoSys.DAL.Repository
             return newQuery;
         }
 
+        #endregion
+
+        #region - Update
+
         public void Update(T entity)
         {
             var updatedEntity = _context.Attach(entity);
             updatedEntity.State = EntityState.Modified;
             _context.SaveChanges();
         }
+
+        #endregion
     }
 }

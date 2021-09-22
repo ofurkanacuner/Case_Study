@@ -18,6 +18,8 @@ namespace GeoSys.Api.Controllers
     [ApiController]
     public class ProductsController : Controller
     {
+        #region - Variable
+
         private readonly IProductsServices _productsServices;
         private readonly ILogger<ProductsController> _logger;
         ApiResponse apiResponse = new ApiResponse
@@ -25,11 +27,20 @@ namespace GeoSys.Api.Controllers
             IsSuccess = false,
             StatusCode = 400
         };
+
+        #endregion
+
+        #region - Ctor
+
         public ProductsController(IProductsServices productsServices, ILogger<ProductsController> logger)
         {
             _productsServices = productsServices;
             _logger = logger;
         }
+
+        #endregion
+
+        #region - Product Get
 
         /// <summary>
         /// Verilen ID'ye ait ürün öğesini getirir.
@@ -70,6 +81,9 @@ namespace GeoSys.Api.Controllers
                 return BadRequest(apiResponse);
             }
         }
+        #endregion
+
+        #region - Product Add
 
         /// <summary>
         /// Sisteme yeni bir ürün öğesi ekler.
@@ -99,11 +113,15 @@ namespace GeoSys.Api.Controllers
             }
         }
 
+        #endregion
+
+        #region - Products List
+
         /// <summary>
         /// Sistemde var olan bütün ürün öğelerini listeler.
         /// </summary>
         /// <param name=""></param>
-        /// <returns>List<ProductsViewModel></returns>
+        /// <returns>ProductsViewModel List</returns>
         [ActionName("List")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -138,6 +156,10 @@ namespace GeoSys.Api.Controllers
             }
         }
 
+        #endregion
+
+        #region - Product Delete
+
         /// <summary>
         /// Verilen ID'ye ait ürün öğesini sistemden siler.
         /// </summary>
@@ -165,6 +187,10 @@ namespace GeoSys.Api.Controllers
             }
         }
 
+        #endregion
+
+        #region - Product Update
+
         /// <summary>
         /// Verilen bilgiler ile ürün'yi bulup yeni veriler ile günceller
         /// </summary>
@@ -191,5 +217,8 @@ namespace GeoSys.Api.Controllers
                 return BadRequest(apiResponse);
             }
         }
+
+        #endregion
+
     }
 }

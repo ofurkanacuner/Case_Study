@@ -10,15 +10,24 @@ namespace GeoSys.DAL.Context
 {
     public class ApplicationContext : DbContext
     {
+        #region - OnConfiguring
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(connectionString: @"Server=.; Database=GeoSys; User ID=sa; Password=123;trusted_connection=true;");
         }
 
+        #endregion
+
+        #region - DBSet
+
         public DbSet<Categories> Categories { get; set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<ProductsGallery> ProductsGallery { get; set; }
 
+        #endregion
+
+        #region - OnModelCreating
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,5 +47,8 @@ namespace GeoSys.DAL.Context
                 .WithOne(m => m.Products)
                 .HasForeignKey(m => m.ProductId);
         }
+
+        #endregion
+
     }
 }

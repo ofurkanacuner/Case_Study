@@ -13,7 +13,6 @@ namespace GeoSys.DAL.Mappings
         public virtual void Configure(EntityTypeBuilder<T> builder)
         {
 
-
         }
     }
 

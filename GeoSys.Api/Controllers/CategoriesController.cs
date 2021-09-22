@@ -18,6 +18,8 @@ namespace GeoSys.Api.Controllers
     [ApiController]
     public class CategoriesController : Controller
     {
+        #region - Variable
+
         private readonly ICategoriesServices _categoriesServices;
         private readonly ILogger<CategoriesController> _logger;
         ApiResponse apiResponse = new ApiResponse
@@ -26,17 +28,28 @@ namespace GeoSys.Api.Controllers
             StatusCode = 400
         };
 
+        #endregion
+
+        #region - Ctor
+
         public CategoriesController(ICategoriesServices categoriesServices, ILogger<CategoriesController> logger)
         {
             _categoriesServices = categoriesServices;
             _logger = logger;
         }
 
+        #endregion
+
+        #region - Categori Get
+
         /// <summary>
         /// Verilen ID'ye ait kategori öğesini getirir.
         /// </summary>
         /// <param name="id"></param>
         /// <returns>CategoriesViewModel</returns>
+        /// <response code="200">Added</response> 
+        /// <response code="400">Bad Request</response> 
+        /// <response code="404">Not Found</response> 
         [ActionName("Get")]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CategoriesViewModel))]
@@ -72,16 +85,21 @@ namespace GeoSys.Api.Controllers
             }
         }
 
+        #endregion
+
+        #region - Categori Add
+
         /// <summary>
         /// Sisteme yeni bir kategori öğesi ekler.
         /// </summary>
         /// <param name="CategoriesViewModel"></param>
         /// <returns>void</returns>
+        /// <response code="200">Added</response> 
+        /// <response code="400">Bad Request</response> 
         [ActionName("Add")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Add([FromForm] CategoriesViewModel viewModel)
         {
             try
@@ -100,11 +118,15 @@ namespace GeoSys.Api.Controllers
             }
         }
 
+        #endregion
+
+        #region - Categori List
+
         /// <summary>
         /// Sistemde var olan bütün kategori öğelerini listeler.
         /// </summary>
         /// <param name=""></param>
-        /// <returns>List<CategoriesViewModel></returns>
+        /// <returns>CategoriesViewModel List</returns>
         [ActionName("List")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -139,6 +161,10 @@ namespace GeoSys.Api.Controllers
             }
         }
 
+        #endregion
+
+        #region - Categori Delete
+
         /// <summary>
         /// Verilen ID'ye ait kategori öğesini sistemden siler.
         /// </summary>
@@ -166,6 +192,10 @@ namespace GeoSys.Api.Controllers
             }
         }
 
+        #endregion
+
+        #region - Categori Update
+
         /// <summary>
         /// Verilen bilgiler ile kategori'yi bulup yeni veriler ile günceller
         /// </summary>
@@ -192,5 +222,7 @@ namespace GeoSys.Api.Controllers
                 return BadRequest(apiResponse);
             }
         }
+
+        #endregion
     }
 }

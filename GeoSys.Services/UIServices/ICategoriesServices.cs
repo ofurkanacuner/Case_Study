@@ -1,7 +1,11 @@
-﻿using GeoSys.Domain.Helpers;
+﻿#region - Using
+
+using GeoSys.Domain.Helpers;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
+#endregion
 
 namespace GeoSys.Services.UIServices
 {
@@ -13,8 +17,20 @@ namespace GeoSys.Services.UIServices
 
     public class CategoriServices : ICategoriesServices
     {
+        #region - Variable
+
         private readonly IAPIClient apiClient;
         private readonly IConfiguration configuration;
+
+        ApiResponse result = new ApiResponse
+        {
+            StatusCode = 400,
+            IsSuccess = false
+        };
+
+        #endregion
+
+        #region - Ctor
 
         public CategoriServices(IAPIClient apiClient, IConfiguration configuration)
         {
@@ -22,15 +38,10 @@ namespace GeoSys.Services.UIServices
             this.configuration = configuration;
         }
 
+        #endregion
+
         public async Task<ApiResponse> GetCategori(int id)
         {
-            var result = new ApiResponse
-            {
-                StatusCode = 400,
-                IsSuccess = false
-            };
-
-
             var entpoint = configuration.GetSection("Config:ApiUrl").Value;
 
             var headers = new Dictionary<string, string>();
@@ -54,12 +65,6 @@ namespace GeoSys.Services.UIServices
 
         public async Task<ApiResponse> GetCategoriList()
         {
-            var result = new ApiResponse
-            {
-                StatusCode = 400,
-                IsSuccess = false
-            };
-
 
             var entpoint = configuration.GetSection("Config:ApiUrl").Value;
             entpoint += "Categories";

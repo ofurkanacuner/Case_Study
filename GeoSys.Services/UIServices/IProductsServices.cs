@@ -1,7 +1,11 @@
-﻿using GeoSys.Domain.Helpers;
+﻿#region - Using
+
+using GeoSys.Domain.Helpers;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
+#endregion
 
 namespace GeoSys.Services.UIServices
 {

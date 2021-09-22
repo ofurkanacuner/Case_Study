@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GeoSys.Api</name>
+    </assembly>
+    <members>
+        <member name="M:GeoSys.Api.Controllers.CategoriesController.Get(System.Int32)">
+            <summary>
+            Verilen ID'ye ait kategori öğesini getirir.
+            </summary>
+            <param name="id"></param>
+            <returns>CategoriesViewModel</returns>
+            <response code="200">Added</response> 
+            <response code="400">Bad Request</response> 
+            <response code="404">Not Found</response> 
+        </member>
+        <member name="M:GeoSys.Api.Controllers.CategoriesController.Add(GeoSys.Domain.ViewModels.CategoriesViewModel)">
+            <summary>
+            Sisteme yeni bir kategori öğesi ekler.
+            </summary>
+            <param name="CategoriesViewModel"></param>
+            <returns>void</returns>
+            <response code="200">Added</response> 
+            <response code="400">Bad Request</response> 
+        </member>
+        <member name="M:GeoSys.Api.Controllers.CategoriesController.List">
+            <summary>
+            Sistemde var olan bütün kategori öğelerini listeler.
+            </summary>
+            <param name=""></param>
+            <returns>CategoriesViewModel List</returns>
+        </member>
+        <member name="M:GeoSys.Api.Controllers.CategoriesController.Delete(System.Int32)">
+            <summary>
+            Verilen ID'ye ait kategori öğesini sistemden siler.
+            </summary>
+            <param name="id"></param>
+            <returns>void</returns>
+        </member>
+        <member name="M:GeoSys.Api.Controllers.CategoriesController.Update(GeoSys.Domain.ViewModels.CategoriesViewModel)">
+            <summary>
+            Verilen bilgiler ile kategori'yi bulup yeni veriler ile günceller
+            </summary>
+            <param name="viewModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GeoSys.Api.Controllers.ProductsController.Get(System.Int32)">
+            <summary>
+            Verilen ID'ye ait ürün öğesini getirir.
+            </summary>
+            <param name="id"></param>
+            <returns>ProductsViewModel</returns>
+        </member>
+        <member name="M:GeoSys.Api.Controllers.ProductsController.Add(GeoSys.Domain.ViewModels.ProductsViewModel)">
+            <summary>
+            Sisteme yeni bir ürün öğesi ekler.
+            </summary>
+            <param name="ProductsViewModel"></param>
+            <returns>void</returns>
+        </member>
+        <member name="M:GeoSys.Api.Controllers.ProductsController.List">
+            <summary>
+            Sistemde var olan bütün ürün öğelerini listeler.
+            </summary>
+            <param name=""></param>
+            <returns>ProductsViewModel List</returns>
+        </member>
+        <member name="M:GeoSys.Api.Controllers.ProductsController.Delete(System.Int32)">
+            <summary>
+            Verilen ID'ye ait ürün öğesini sistemden siler.
+            </summary>
+            <param name="id"></param>
+            <returns>void</returns>
+        </member>
+        <member name="M:GeoSys.Api.Controllers.ProductsController.Update(GeoSys.Domain.ViewModels.ProductsViewModel)">
+            <summary>
+            Verilen bilgiler ile ürün'yi bulup yeni veriler ile günceller
+            </summary>
+            <param name="viewModel"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
