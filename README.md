@@ -52,7 +52,7 @@ CaseStudy.Api and CaseStudy.UI
 
 * [.NET Core 5.0](https://www.microsoft.com/net/) 
 * [Entitiy Framework Core](https://docs.microsoft.com/en-us/ef/core/) - .NET ORM Tool
-* [MsSQLe](https://www.microsoft.com/tr-tr/sql-server/sql-server-downloads) - MsSQL
+* [MsSQL](https://www.microsoft.com/tr-tr/sql-server/sql-server-downloads) - MsSQL
 * [Swagger](https://swagger.io/) - API developer tools for testing and documention
 
 ## Contributing
